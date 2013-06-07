@@ -3,7 +3,6 @@
 
     var Separator = function () {
         this.bindings = {};
-        this.templates = {};
     }
 
     this.Separator = this.Sep = new Separator(); // register helper to window
@@ -11,6 +10,10 @@
 
     Separator.prototype.register = function (name, func) {
         this.bindings[name] = func;
+    }    
+    
+    Separator.prototype.unregister = function (name) {
+        if (this.bindings[name]) delete this.bindings[name];
     }
 
     Separator.prototype.set = function () {
